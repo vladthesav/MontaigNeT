@@ -2,24 +2,32 @@ import Button from './Button'
 import React, { useState } from 'react';
 
 const TextView = ({title}) => {
-    const [text, setText] = useState('');
+    const [input, setInput] = useState('The meaning of life is');
+    const [output, setOutput] = useState('')
 
+    const apiRequest = (e) => {
+
+    }
     const onClick = (e) => {
-        console.log(text.value);
+        console.log(input);
+
+        //api request code here - gotta do error handling too!
+
+        //setOutput(input);
     }
     return (
         <div>
             <form>
                 <label>
-                    
-                    <input type="text" name="name" 
-                     placeholder="The meaning of life is"/>
+                    <input type="text" name="input" 
+                    onChange={e => setInput(e.target.value)} 
+                    placeholder="The meaning of life is"/>
                 </label>
-                <input type="submit" value="Submit" />
             </form>
-            <textarea></textarea>
-
+            <textarea value={output}></textarea>
+            <div><Button color='blue' text = 'complete' onClick = {onClick}/></div>
         </div>
+        
     
     )
 }
