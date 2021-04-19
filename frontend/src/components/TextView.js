@@ -19,11 +19,11 @@ const TextView = ({title}) => {
 
         fetch(endpoint, options)
         .then((response) => response.json())
-        .then((data) => console.log('This is your data', data));
+        .then((data) =>setOutput(data.output));
 
     }
     const onClick = (e) => {
-        console.log(input);
+        //console.log(input);
 
         //api request code here - gotta do error handling too!
         apiRequest();
@@ -38,7 +38,7 @@ const TextView = ({title}) => {
                     placeholder="The meaning of life is"/>
                 </label>
             </form>
-            <textarea value={output}></textarea>
+            <p>{output}</p>
             <div><Button color='blue' text = 'complete' onClick = {onClick}/></div>
         </div>
         

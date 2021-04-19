@@ -1,5 +1,5 @@
 from flask import Flask, jsonify,request, after_this_request
-from ml_pipeline import *
+from ml_pipeline import predict
 
 
 app = Flask(__name__)
@@ -16,7 +16,7 @@ def test():
     return jsonify({'it':'works'})
 
 @app.route('/predict',methods = ['POST'])
-def predict():
+def pred():
      #do this to deal with cors error
     @after_this_request
     def add_header(response):
@@ -28,9 +28,9 @@ def predict():
     data = request.get_json()
     text = data['text']
     
-    print(text)
+    prediction = predict(text)
 
-    return jsonify({'output':text + ' ur mom' })
+    return jsonify({'output':prediction})
 
 
 if __name__ == '__main__':

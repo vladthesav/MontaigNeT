@@ -34,16 +34,25 @@ class RNNModule(nn.Module):
                 torch.zeros(1, batch_size, self.lstm_size))
 
 #load lstm
-net = torch.load('lstm',map_location=device)
+#net = torch.load('lstm',map_location=device)
 
-#load data needed to prepeocess text
+#print(net.embedding, net.lstm_size)
+#torch.save(net.state_dict(), 'lstm_state_dict.pt')
+
+#load data needed to prepeocess text and initialize model
 with open('preprocessing_meta.json', 'r') as fp: preprocessing_meta = json.load(fp)
 
 n_vocab = preprocessing_meta['n_vocab']
 vocab_to_int = preprocessing_meta['vocab_to_int']
 #int_to_vocab = preprocessing_meta['int_to_vocab']
 int_to_vocab = {i:c for c,i in vocab_to_int.items()}
-#print(int_to_vocab)
+
+
+#create model instance and load state dict
+net = RNNModule(n_vocab, 64, 128, 64 )
+net.load_state_dict(torch.load('lstm_state_dict.pt'))
+net.eval()
+
 def predict(text,device=device, net=net, n_vocab=n_vocab, vocab_to_int=vocab_to_int, int_to_vocab=int_to_vocab, top_k=5):
     net.eval()
     #words = ['I', 'find']
@@ -73,4 +82,4 @@ def predict(text,device=device, net=net, n_vocab=n_vocab, vocab_to_int=vocab_to_
 
     return ' '.join(words).encode('utf-8')
 
-#print(predict("I am"))
+print(predict("I am"))
