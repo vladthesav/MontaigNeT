@@ -6,13 +6,27 @@ const TextView = ({title}) => {
     const [output, setOutput] = useState('')
 
     const apiRequest = (e) => {
+        const endpoint = 'http://0.0.0.0:3500/predict'
+        const options = {
+            method: "POST",
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: "include",
+            body: {'text':input},
+          };
+
+        fetch(endpoint, options)
+        .then((response) => response.json())
+        .then((data) => console.log('This is your data', data));
 
     }
     const onClick = (e) => {
         console.log(input);
 
         //api request code here - gotta do error handling too!
-
+        apiRequest();
         //setOutput(input);
     }
     return (
