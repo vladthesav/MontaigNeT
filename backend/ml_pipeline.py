@@ -2,6 +2,9 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+import numpy as np
+import json
+
 #select device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
@@ -33,3 +36,41 @@ class RNNModule(nn.Module):
 #load lstm
 net = torch.load('lstm',map_location=device)
 
+#load data needed to prepeocess text
+with open('preprocessing_meta.json', 'r') as fp: preprocessing_meta = json.load(fp)
+
+n_vocab = preprocessing_meta['n_vocab']
+vocab_to_int = preprocessing_meta['vocab_to_int']
+#int_to_vocab = preprocessing_meta['int_to_vocab']
+int_to_vocab = {i:c for c,i in vocab_to_int.items()}
+#print(int_to_vocab)
+def predict(text,device=device, net=net, n_vocab=n_vocab, vocab_to_int=vocab_to_int, int_to_vocab=int_to_vocab, top_k=5):
+    net.eval()
+    #words = ['I', 'find']
+    words = text.split()
+
+    state_h, state_c = net.zero_state(1)
+    state_h = state_h.to(device)
+    state_c = state_c.to(device)
+    for w in words:
+        ix = torch.tensor([[vocab_to_int[w]]]).to(device)
+        output, (state_h, state_c) = net(ix, (state_h, state_c))
+
+    _, top_ix = torch.topk(output[0], k=top_k)
+    choices = top_ix.tolist()
+    choice = np.random.choice(choices[0])
+
+    words.append(int_to_vocab[choice])
+
+    for _ in range(100):
+        ix = torch.tensor([[choice]]).to(device)
+        output, (state_h, state_c) = net(ix, (state_h, state_c))
+
+        _, top_ix = torch.topk(output[0], k=top_k)
+        choices = top_ix.tolist()
+        choice = np.random.choice(choices[0])
+        words.append(int_to_vocab[choice])
+
+    return ' '.join(words).encode('utf-8')
+
+#print(predict("I am"))
