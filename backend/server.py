@@ -1,5 +1,5 @@
 from flask import Flask, jsonify,request, after_this_request
-#from ml_pipeline import *
+from ml_pipeline import *
 
 
 app = Flask(__name__)
@@ -22,10 +22,15 @@ def predict():
     def add_header(response):
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
+
     
     #get input text  from user
-    text = request.form['text']
+    data = request.get_json()
+    text = data['text']
     
+    print(text)
+
+    return jsonify({'output':text + ' ur mom' })
 
 
 if __name__ == '__main__':

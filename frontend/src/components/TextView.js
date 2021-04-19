@@ -6,7 +6,7 @@ const TextView = ({title}) => {
     const [output, setOutput] = useState('')
 
     const apiRequest = (e) => {
-        const endpoint = 'http://0.0.0.0:3500/predict'
+        const endpoint = '/predict'
         const options = {
             method: "POST",
             mode: 'cors',
@@ -14,7 +14,7 @@ const TextView = ({title}) => {
                 'Content-Type': 'application/json',
             },
             credentials: "include",
-            body: {'text':input},
+            body: JSON.stringify({'text':input}),
           };
 
         fetch(endpoint, options)
