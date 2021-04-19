@@ -33,12 +33,6 @@ class RNNModule(nn.Module):
         return (torch.zeros(1, batch_size, self.lstm_size),
                 torch.zeros(1, batch_size, self.lstm_size))
 
-#load lstm
-#net = torch.load('lstm',map_location=device)
-
-#print(net.embedding, net.lstm_size)
-#torch.save(net.state_dict(), 'lstm_state_dict.pt')
-
 #load data needed to prepeocess text and initialize model
 with open('preprocessing_meta.json', 'r') as fp: preprocessing_meta = json.load(fp)
 
