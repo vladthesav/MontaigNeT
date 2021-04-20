@@ -82,4 +82,4 @@ def predict(text,device=device, net=net, n_vocab=n_vocab, vocab_to_int=vocab_to_
 
     return ' '.join(words).encode('utf-8')
 
-print(predict("I am"))
+#print(predict("I am"))
