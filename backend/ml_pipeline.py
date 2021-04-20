@@ -4,6 +4,7 @@ import torch.nn.functional as F
 
 import numpy as np
 import json
+import os
 
 #select device
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -32,6 +33,11 @@ class RNNModule(nn.Module):
     def zero_state(self, batch_size):
         return (torch.zeros(1, batch_size, self.lstm_size),
                 torch.zeros(1, batch_size, self.lstm_size))
+
+
+#get current working directory so we can run this from outside the folder
+cwd = os.getcwd()
+print(cwd)
 
 #load data needed to prepeocess text and initialize model
 with open('preprocessing_meta.json', 'r') as fp: preprocessing_meta = json.load(fp)

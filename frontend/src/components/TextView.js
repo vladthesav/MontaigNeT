@@ -2,7 +2,7 @@ import Button from './Button'
 import React, { useState } from 'react';
 
 const TextView = ({title}) => {
-    const [input, setInput] = useState('The meaning of life is');
+    const [input, setInput] = useState('Thou mother is');
     const [output, setOutput] = useState('')
 
     const apiRequest = (e) => {
@@ -35,7 +35,7 @@ const TextView = ({title}) => {
                 <label>
                     <input type="text" name="input" 
                     onChange={e => setInput(e.target.value)} 
-                    placeholder="The meaning of life is"/>
+                    placeholder="Thou mother is"/>
                 </label>
             </form>
             <p>{output}</p>
