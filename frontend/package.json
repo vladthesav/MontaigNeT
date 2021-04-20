@@ -23,7 +23,7 @@
       "react-app/jest"
     ]
   },
-  "proxy":"http://localhost:3500",
+  "proxy":"http://backend:3500",
 
   "browserslist": {
     "production": [

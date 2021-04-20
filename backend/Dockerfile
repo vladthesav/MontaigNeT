@@ -16,6 +16,7 @@ COPY . /app
 
 EXPOSE 3500
 
-ENTRYPOINT [ "python3" ]
+#ENTRYPOINT [ "python3" ]
 
-CMD [ "server.py" ]
+CMD ["python3","server.py"]
+#CMD [ "nohup","python3","server.py", "&" ]

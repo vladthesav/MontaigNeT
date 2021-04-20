@@ -23,7 +23,7 @@ def pred():
         response.headers['Access-Control-Allow-Origin'] = '*'
         return response
 
-    
+    print('REQUEST   ',request)
     #get input text  from user
     data = request.get_json()
     text = data['text']
@@ -32,6 +32,6 @@ def pred():
 
     return jsonify({'output':prediction})
 
-
+print("RUNNING APP")
 if __name__ == '__main__':
     app.run(debug=True, port=3500,host='0.0.0.0')
