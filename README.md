@@ -9,7 +9,7 @@ In order to ensure that this application can be run on any machine with minimal 
 
 ## Usage
 
-Runing MontaigNet with docker-compose:
+Running MontaigNet with docker-compose:
 
     git clone https://github.com/vladthesav/MontaigNeT.git
     cd MontaigNet
