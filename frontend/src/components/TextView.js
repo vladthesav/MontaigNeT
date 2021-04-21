@@ -7,20 +7,32 @@ const TextView = ({title}) => {
 
     const apiRequest = (e) => {
         const endpoint = '/predict'
+        
         const options = {
             method: "POST",
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json',
             },
             credentials: "include",
-            body: JSON.stringify({'text':input}),
+            body: JSON.stringify({text:input}),
           };
+          
 
         fetch(endpoint, options)
         .then((response) => response.json())
         .then((data) =>setOutput(data.output));
+        
+       const headers = {
+        headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+  
+      };
 
+   
     }
     const onClick = (e) => {
         //console.log(input);
