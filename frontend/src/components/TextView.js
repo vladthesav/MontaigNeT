@@ -19,28 +19,12 @@ const TextView = ({title}) => {
             body: JSON.stringify({text:input}),
           };
           
-
         fetch(endpoint, options)
         .then((response) => response.json())
         .then((data) =>setOutput(data.output));
-        
-       const headers = {
-        headers : { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-         }
-  
-      };
 
-   
     }
-    const onClick = (e) => {
-        //console.log(input);
 
-        //api request code here - gotta do error handling too!
-        apiRequest();
-        //setOutput(input);
-    }
     return (
         <div>
             <form>
@@ -51,7 +35,7 @@ const TextView = ({title}) => {
                 </label>
             </form>
             <p>{output}</p>
-            <div><Button color='blue' text = 'complete' onClick = {onClick}/></div>
+            <div><Button color='blue' text = 'complete' onClick = {apiRequest}/></div>
         </div>
         
     

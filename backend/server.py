@@ -10,7 +10,6 @@ def test():
 
 @app.route('/predict',methods = ['POST'])
 def pred():
-    #print(request)
     #get input text  from user
     data = request.get_json()
     text = data['text']
@@ -19,7 +18,7 @@ def pred():
 
     #make it a string so we can jsonify it!
     prediction = str(prediction, encoding='utf-8')
-    #print(prediction)
+    
     return jsonify({'output':prediction})
 
 if __name__ == '__main__':

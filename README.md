@@ -1,5 +1,5 @@
 # MontaigNeT
-MontaigNet (montaigne - net) is a machine learning web app that generates text in the style of 1500' French essayist Michel de Montaigne.
+MontaigNet (Montaigne - net) is a machine learning web app that generates text in the style of 1500' French essayist Michel de Montaigne.
 
 This application is powered by a PyTorch LSTM model trained on The Essays of Michel de Montaigne (https://www.gutenberg.org/files/3600/3600-h/3600-h.htm), which runs in a python flask REST API.
 
