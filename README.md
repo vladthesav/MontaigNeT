@@ -12,7 +12,7 @@ In order to ensure that this application can be run on any machine with minimal 
 Running MontaigNet with docker-compose:
 
     git clone https://github.com/vladthesav/MontaigNeT.git
-    cd MontaigNet
+    cd MontaigNeT
     docker-compose up --build
     
     
