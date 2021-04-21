@@ -13,7 +13,7 @@ Running MontaigNet with docker-compose:
 
     git clone https://github.com/vladthesav/MontaigNeT.git
     cd MontaigNeT
-    docker-compose up --build
+    sudo docker-compose up --build
     
     
 Connect to http://localhost:3000 and you're set!
