@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-#MAINTANER Your Name "youremail@domain.tld"
-
 RUN apt-get update -y && \
     apt-get install -y python3-pip python3-dev
 
