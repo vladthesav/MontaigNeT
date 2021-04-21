@@ -22,5 +22,6 @@ Connect to http://localhost:3000 and you're set!
 Todo:
 - [X] Get app working with docker compose.
 - [ ] Add error handling to backend (deal with unknown tokens).
+- [ ] Improve text generation model.
 - [ ] Touch up frontend.
 - [ ] Upload model training code. 
