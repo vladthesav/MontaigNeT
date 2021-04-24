@@ -13,11 +13,9 @@ def pred():
     #get input text  from user
     data = request.get_json()
     text = data['text']
-    
-    prediction = predict(text)
 
-    #make it a string so we can jsonify it!
-    prediction = str(prediction, encoding='utf-8')
+    #run through LSTM
+    prediction = predict(text)
     
     return jsonify({'output':prediction})
 
